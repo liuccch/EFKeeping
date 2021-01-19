@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="/static/login/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/login/css/style.css">
+    <script src="/static/login/js/jquery.min.js"></script>
+    <script src="/static/login/js/index.js"></script>
+</head>
+<body>
+
+<div class="materialContainer">
+    <div class="box">
+        <form action="{% url 'login' %}" method="post">
+        <div class="title">登录</div>
+
+        {% if login_form.captcha.errors %}
+            <div class="alert alert-warning">{{ login_form.captcha.errors }}</div>
+        {% elif message %}
+            <div class="alert alert-warning">{{ message }}</div>
+        {% endif %}
+        {% csrf_token %}
+
+		<div class="input">
+			{{ login_form.username.label_tag }}
+            {{ login_form.username}}
+		</div>
+		<div class="input">
+			{{ login_form.password.label_tag }}
+            {{ login_form.password }}
+		</div>
+
+        <div class="input">
+            {{ login_form.captcha }}
+        </div>
+
+		<div class="button login">
+			<button type="submit">
+				<span>登录</span>
+				<i class="fa fa-check"></i>
+			</button>
+		</div>
+        </form>
+    <a href="{% url 'regerster' %}" class="pass-forgot">注册</a>
+	</div>
+
+</div>
+</body>
+</html>

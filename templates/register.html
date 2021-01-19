@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="/static/login/css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/login/css/style.css">
+    <script src="/static/login/js/jquery.min.js"></script>
+    <script src="/static/login/js/index.js"></script>
+</head>
+<body>
+
+<div class="materialContainer">
+
+    <div class="box">
+        <form action="{% url 'regerster' %}" method="post">
+           {% if register_form.captcha.errors %}
+                <div class="alert alert-warning">{{ register_form.captcha.errors }}</div>
+            {% elif message %}
+                <div class="alert alert-warning">{{ message }}</div>
+            {% endif %}
+            {% csrf_token %}
+        <div class="title">注册</div>
+
+		<div class="input">
+			{{ register_form.username.label_tag }}
+            {{ register_form.username}}
+		</div>
+
+		<div class="input">
+			{{ register_form.password1.label_tag }}
+            {{ register_form.password1 }}
+		</div>
+
+        <div class="input">
+            {{ register_form.password2.label_tag }}
+            {{ register_form.password2 }}
+        </div>
+
+        <div class="input">
+            {{ register_form.email.label_tag }}
+            {{ register_form.email }}
+        </div>
+        <div class="input">
+            {{ register_form.captcha }}
+        </div>
+
+		<div class="button login">
+			<button type="submit">
+				<span>注册</span>
+				<i class="fa fa-check"></i>
+			</button>
+		</div>
+        </form>
+    <a href="{% url 'login' %}" class="pass-forgot">直接登录</a>
+	</div>
+
+
+{#</div>#}
+{#    <div style="margin: 15% 40%;">#}
+{#        <h1>欢迎注册</h1>#}
+{#       <form action="{% url 'regerster' %}" method="post">#}
+{#           {% if register_form.captcha.errors %}#}
+{#                    <div class="alert alert-warning">{{ register_form.captcha.errors }}</div>#}
+{#                {% elif message %}#}
+{#                    <div class="alert alert-warning">{{ message }}</div>#}
+{#                {% endif %}#}
+{#                  {% csrf_token %}#}
+{#                  <h3 class="text-center">欢迎注册</h3>#}
+{##}
+{#                  <div class="form-group">#}
+{#                    {{ register_form.username.label_tag }}#}
+{#                    {{ register_form.username}}#}
+{#                  </div>#}
+{##}
+{#                  <div class="form-group">#}
+{#                    {{ register_form.password1.label_tag }}#}
+{#                    {{ register_form.password1 }}#}
+{#                  </div>#}
+{##}
+{#                  <div class="form-group">#}
+{#                    {{ register_form.password2.label_tag }}#}
+{#                    {{ register_form.password2 }}#}
+{#                  </div>#}
+{##}
+{#                  <div class="form-group">#}
+{#                      {{ register_form.email.label_tag }}#}
+{#                      {{ register_form.email }}#}
+{#                  </div>#}
+{##}
+{#                  <div class="form-group">#}
+{#                    {{ register_form.captcha.label_tag }}#}
+{#                    {{ register_form.captcha }}#}
+{#                  </div>#}
+{##}
+{##}
+{##}
+{#                  <div>#}
+{#                      <a href="{% url 'login' %}"  ><ins>直接登录</ins></a>#}
+{#                      <button type="submit" class="btn btn-primary float-right">注册</button>#}
+{#                  </div>#}
+{#        </form>#}
+{#    </div>#}
+</div>
+</body>
+</html>
